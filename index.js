@@ -19,6 +19,11 @@ var execute = function ( obj, task ) {
   var methodName = task[0];
   var passedValue = task[1];
 
+  if (!obj[ methodName ]) {
+    console.error(`No sharp method '${methodName}' found`);
+    return obj;
+  }
+
   if (_.isArray(passedValue)) {
     return obj[ methodName ].apply(this, passedValue); // `this` will be binded later at runtime
   }
