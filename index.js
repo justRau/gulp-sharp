@@ -1,6 +1,6 @@
 var es = require('event-stream');
-var gutil = require('gulp-util');
-var PluginError = gutil.PluginError;
+var Vinyl = require('vinyl');
+var PluginError = require('plugin-error');
 var sharp = require('sharp');
 var _ = require('lodash');
 var path = require('path');
@@ -146,7 +146,7 @@ var gulpSharp = function( options ) {
 
     pipeline(file).then(
       function(outputBuffer){ // onFulfilled
-        var newFile = new gutil.File({
+        var newFile = new Vinyl({
           'cwd' : file.cwd,
           'base' : file.base,
           'path' : file.path,
