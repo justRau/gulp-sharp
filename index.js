@@ -68,26 +68,26 @@ var createSharpPipeline = function( opts ) {
   // remove task that is undefined
   pipeline = _.compact(pipeline);
 
-  return function( file ){
+  return async function( file ){
 
     var promises;
     var input = sharp(file.isNull() ? file.path : file.contents, {sequentialRead: true});
     var executeInstance = execute.bind(input);
 
-    // var metadata = await input.metadata();
+    var metadata = await input.metadata();
 
     var transform = _.reduce( pipeline, function(accumulator, task){
-      // if (task[0] === 'scale') {
-      //   const resizeTask = [
-      //     'resize',
-      //     [
-      //       metadata.width * task[1][0],
-      //       null,
-      //       task[1][1]
-      //     ]
-      //   ];
-      //   task = resizeTask;
-      // }
+      if (task[0] === 'scale') {
+        const resizeTask = [
+          'resize',
+          [
+            metadata.width * task[1][0],
+            null,
+            task[1][1]
+          ]
+        ];
+        task = resizeTask;
+      }
 
       return executeInstance(accumulator, task);
     }, input);
