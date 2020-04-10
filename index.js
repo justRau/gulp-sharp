@@ -65,14 +65,8 @@ var createSharpPipeline = function( opts ) {
 
   return async function( file ){
 
-    var promises = null;
-    var input = null;
-
-    if (file.isNull()) {
-      input = sharp(file.path).sequentialRead(); // soalnya udah direname...
-    } else {
-      input = sharp(file.contents).sequentialRead();
-    }
+    var promises;
+    var input = sharp(file.isNull() ? file.path : file.contents, {sequentialRead: true});
     var executeInstance = execute.bind(input);
 
     var metadata = await input.metadata();
