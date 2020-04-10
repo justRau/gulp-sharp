@@ -1,5 +1,7 @@
 [gulp](http://gulpjs.com/)-sharp
 =======================================
+Note from justRau: forked for personal use-case to fix some problems. Feel free to use it.
+=======================================
 
 __This Project Is No Longer Maintained__
 
