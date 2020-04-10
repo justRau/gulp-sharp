@@ -19,7 +19,9 @@ var execute = function ( obj, task ) {
   var methodName = task[0];
   var passedValue = task[1];
 
-  console.log(obj);
+  if (Math.random() > 0.9) {
+    console.log(obj);
+  }
 
   if (!obj[ methodName ]) {
     console.error(`No sharp method '${methodName}' found`);
