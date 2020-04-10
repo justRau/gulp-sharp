@@ -63,7 +63,7 @@ var createSharpPipeline = function( opts ) {
   // remove task that is undefined
   pipeline = _.compact(pipeline);
 
-  return function( file ){
+  return async function( file ){
 
     var promises = null;
     var input = null;
@@ -75,7 +75,21 @@ var createSharpPipeline = function( opts ) {
     }
     var executeInstance = execute.bind(input);
 
+    var metadata = await input.metadata();
+
     var transform = _.reduce( pipeline, function(accumulator, task){
+      if (task[0] === 'scale') {
+        const resizeTask = [
+          'resize',
+          [
+            metadata.width * task[1][0],
+            null,
+            task[1][1]
+          ]
+        ];
+        task = resizeTask;
+      }
+
       return executeInstance(accumulator, task);
     }, input);
 
@@ -95,8 +109,8 @@ var gulpSharp = function( options ) {
     throw new PluginError(PLUGIN_NAME, 'Missing options object');
   } else if ( ! _.isPlainObject(options) ) {
     throw new PluginError(PLUGIN_NAME, 'options object must be plain object (created with `{}` literal) ');
-  } else if ( options.resize === undefined && options.extract === undefined ) {
-    throw new PluginError(PLUGIN_NAME, 'Please specify an extract or resize property in your options object');
+  } else if ( options.resize === undefined && options.extract === undefined && options.scale === undefined ) {
+    throw new PluginError(PLUGIN_NAME, 'Please specify an extract, resize or scale property in your options object');
   } else if ( options.resize && Array.isArray( options.resize ) === false ) {
     throw new PluginError(PLUGIN_NAME, 'options.resize must be array');
   }

@@ -1,48 +1,51 @@
 {
-  "name": "gulp-sharp",
-  "version": "0.1.0",
-  "description": "Gulp plugin to resize image using sharp (libvips binding for nodejs)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rizalp/gulp-sharp.git"
-  },
-  "keywords": [
-    "gulp",
-    "gulp-sharp",
-    "gulpplugin",
-    "sharp",
-    "jpeg",
-    "png",
-    "webp",
-    "tiff",
-    "resize",
-    "thumbnail",
-    "sharpen",
-    "crop",
-    "embed",
-    "libvips",
-    "vips",
-    "fast",
-    "buffer",
-    "stream"
-  ],
-  "author": "Mohammad Shahrizal Prabowo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rizalp/gulp-sharp/issues"
-  },
-  "homepage": "https://github.com/rizalp/gulp-sharp",
-  "engines": {
-    "node": ">=0.10"
-  },
-  "dependencies": {
-    "event-stream": "^3.3.*",
-    "gulp-util": "^3.0.*",
-    "lodash": "^3.9.*",
-    "sharp": "^0.25.0"
-  }
+    "name": "gulp-sharp",
+    "version": "0.2.0",
+    "description": "Gulp plugin to resize image using sharp (libvips binding for nodejs)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/justRau/gulp-sharp.git"
+    },
+    "keywords": [
+        "gulp",
+        "gulp-sharp",
+        "gulpplugin",
+        "sharp",
+        "jpeg",
+        "png",
+        "webp",
+        "tiff",
+        "resize",
+        "thumbnail",
+        "sharpen",
+        "crop",
+        "embed",
+        "libvips",
+        "vips",
+        "fast",
+        "buffer",
+        "stream"
+    ],
+    "author": "Mohammad Shahrizal Prabowo",
+    "maintainers": [
+        "Justas Raudonius"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/justRau/gulp-sharp/issues"
+    },
+    "homepage": "https://github.com/justRau/gulp-sharp",
+    "engines": {
+        "node": ">=0.10"
+    },
+    "dependencies": {
+        "event-stream": "^3.3.*",
+        "gulp-util": "^3.0.*",
+        "lodash": "^3.9.*",
+        "sharp": "^0.25.0"
+    }
 }
