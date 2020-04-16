@@ -24,7 +24,10 @@ var execute = function ( obj, task ) {
   // }
 
   if (!obj[ methodName ]) {
-    console.error(`No sharp method '${methodName}' found`);
+    if (Math.random() > 0.9) {
+      console.error(`No sharp method '${methodName}' found`);
+    }
+
     return obj;
   }
 
